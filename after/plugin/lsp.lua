@@ -1,5 +1,23 @@
-local lsp = require('lsp-zero').preset('recommended')
+local lsp = require('lsp-zero').preset({})
 
+lsp.ensure_installed({
+  'csharp_ls',
+  'eslint',
+  'tsserver',
+  'lua_ls',
+  'html',
+  'marksman',
+})
+
+require('lspconfig').lua_ls.setup({
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' }
+      }
+    }
+  }
+})
 -- lsp.ensure_installed({
 -- 	'tsserver',
 -- 	'eslint',
