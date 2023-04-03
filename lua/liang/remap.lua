@@ -4,6 +4,10 @@ vim.keymap.set("n", "<C-n>", function()
 	vim.o.number = not vim.o.number
 end)
 
+-- Remap <C-v> (enter block visual mode) to <C-q>
+-- because it's conflict with Windows shotcut
+vim.keymap.set('n', '<C-q>', '<C-v>')
+
 -- Move selected lines in visual mode
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv") -- move down
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv") -- move up
