@@ -10,6 +10,8 @@ Lua scripts for my nvim configuration
 
   For windows: https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support
 
+* Ripgrep (https://github.com/BurntSushi/ripgrep#installation)
+
 ## Installation
 
 * Install Neovim (https://github.com/neovim/neovim/wiki/Installing-Neovim#install-from-package)
