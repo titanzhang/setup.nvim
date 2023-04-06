@@ -1,7 +1,11 @@
-local loaded_harpoon, _ = pcall(require, 'harpoon')
+local loaded_harpoon, harpoon = pcall(require, 'harpoon')
 local loaded_telescope, telescope = pcall(require, 'telescope')
 
 if loaded_harpoon then
+  harpoon.setup({
+    menu = { width = vim.api.nvim_win_get_width(0) - 20 }
+  })
+
   local mark = require('harpoon.mark')
   local ui = require('harpoon.ui')
 
