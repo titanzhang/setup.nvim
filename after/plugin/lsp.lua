@@ -33,6 +33,7 @@ lsp.ensure_installed({
   'lua_ls',
   'html',
   'marksman',
+  'rust_analyzer'
 })
 
 require('lspconfig').lua_ls.setup({
@@ -44,5 +45,36 @@ require('lspconfig').lua_ls.setup({
     }
   }
 })
+
+require('lspconfig').rust_analyzer.setup({
+  settings = {
+    ["rust-analyzer"] = {
+      imports = {
+        granularity = {
+          group = "module",
+        },
+        prefix = "self",
+      },
+      cargo = {
+        buildScripts = {
+          enable = true,
+        },
+      },
+      procMacro = {
+        enable = true
+      },
+    }
+  }
+})
+
+-- Workaround for rust-analyzer reporting error on single file
+-- https://github.com/neovim/nvim-lspconfig/issues/1528
+local old_notify = vim.notify
+local silence_pat = '[lspconfig] cmd ("cargo'
+vim.notify = function(msg, level, opts)
+  if (string.sub(msg, 1, string.len(silence_pat)) ~= silence_pat) then
+    old_notify(msg, level, opts)
+  end
+end
 
 lsp.setup()
