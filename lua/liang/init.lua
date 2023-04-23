@@ -8,7 +8,7 @@ local TheLiangGroup = augroup('TheLiang', {})
 local autocmd = vim.api.nvim_create_autocmd
 
 autocmd({ 'BufWritePre' }, {
-  group = TheLiangGroup,
-  pattern = "*",
-  command = "%s/\\s\\+$//e"
+    group = TheLiangGroup,
+    pattern = "*",
+    command = "%s/\\s\\+$//e"
 })
